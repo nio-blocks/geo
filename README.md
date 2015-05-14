@@ -9,10 +9,10 @@ Properties
 --------------
  * First Point - the first point to use in the distance calculation
    * latitude: Something that evaluates to a floating point latitude. Use +/- rather than N/S
-   * longitude: Something that evaluates to a floating point latitude. Use +/- rather than N/S
+   * longitude: Something that evaluates to a floating point latitude. Use +/- rather than E/W
  * Second Point - the second point to use in the distance calculation
    * latitude: Something that evaluates to a floating point latitude. Use +/- rather than N/S
-   * longitude: Something that evaluates to a floating point latitude. Use +/- rather than N/S
+   * longitude: Something that evaluates to a floating point latitude. Use +/- rather than E/W
  * Distance Method - The algorithm used to compute the distance. See [Vincenty](https://en.wikipedia.org/wiki/Vincenty's_formulae) or [Great Circle](https://en.wikipedia.org/wiki/Great-circle_distance) on Wikipedia for more information
  * output_prop *(hidden)* - The attribute on the signal to add the geo data to. Defaults to **geodata**
  
