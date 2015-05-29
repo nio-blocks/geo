@@ -1,24 +1,43 @@
-# Block Template
+GeoDistance
+===========
 
-This repository serves as a "starter" repository for creating a new block.
+Computes the geographic distance between two lat/longs.
 
-## How to use
+This block will add geographic distance data in several different units to incoming signals. Normally, the incoming signals will have the latitude and longitude data for at least one of the points on them. If the block cannot determine both of the points' latitudes and longitudes, the signal will still be notified, but no geodata will be added to the signal.
 
-### Get the block template
+Properties
+--------------
+ * First Point - the first point to use in the distance calculation
+   * latitude: Something that evaluates to a floating point latitude. Use +/- rather than N/S
+   * longitude: Something that evaluates to a floating point latitude. Use +/- rather than E/W
+ * Second Point - the second point to use in the distance calculation
+   * latitude: Something that evaluates to a floating point latitude. Use +/- rather than N/S
+   * longitude: Something that evaluates to a floating point latitude. Use +/- rather than E/W
+ * Distance Method - The algorithm used to compute the distance. See [Vincenty](https://en.wikipedia.org/wiki/Vincenty's_formulae) or [Great Circle](https://en.wikipedia.org/wiki/Great-circle_distance) on Wikipedia for more information
+ * output_prop *(hidden)* - The attribute on the signal to add the geo data to. Defaults to **geodata**
+ 
 
- 1. Fork this repository into your own block
- 1. Clone this repository and rename the folder
+Dependencies
+----------------
+[geopy](https://github.com/geopy/geopy)
 
+Commands
+----------------
+None
 
-### Rename the appropriate files
+Input
+-------
+Any list of signals.
 
- 1. Rename `example_block.py` to whatever your block name will be. We like to keep `_block` at the end of filenames that contain blocks.
- 1. In your new block Python file, rename the class to the new block's name. Do **not** put `Block` in the class name - this is implied.
- 1. Rename `test_example_block.py` to match your new block's class name. Always submit accompanying unit tests in the `tests` folder.
- 1. Rename `BLOCK_README.md` to `README.md` and update the documentation accordingly.
+Output
+---------
+Same list of signals as input, but with **geodata** (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:
 
-
-## File Reference
-
- * **example_block.py** : This is the block code. Additional Python classes and files are definitely welcome. If the file contains a Block class, make sure the filename ends with `_block.py`. If the file represents a Base Block that is not discoverable by itself, have the filename end with `_base.py`.
- * **requirements.txt** : List out any Python dependencies this block requires. This file will be installed by pip when the block is installed. The command for installing the dependencies is `pip install -r requirements.txt`.
+```python
+{
+  'feet': 2842701.55042702,
+  'kilometers': 866.4554329011002,
+  'meters': 866455.4329011001,
+  'miles': 538.3904451566326
+}
+```
