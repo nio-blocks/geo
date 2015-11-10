@@ -36,7 +36,15 @@ class Geocode(Block):
             self._logger.exception("Unable to evaluate query")
             return
         try:
+            self._logger.debug(
+                "Geocode query \"{}\"".format(query))
             location = self._geolocator.geocode(query)
+            self._logger.debug(
+                "Geocode result for query \"{}\": {}".format(query, location))
+            if not location:
+                self._logger.warning(
+                    "No geocode loaction for query: {}".format(query))
+                return
             location_dict = AttributeDict({
                 'address': location.address,
                 'altitude': location.altitude,
@@ -47,4 +55,7 @@ class Geocode(Block):
             setattr(signal, self.output_prop, location_dict)
         except:
             self._logger.exception(
-                "Unable to geocode location from query: {}".format(location))
+                "Unable to geocode location from query: {}".format(query))
+        finally:
+            if not getattr(signal, self.output_prop, None):
+                setattr(signal, self.output_prop, None)
