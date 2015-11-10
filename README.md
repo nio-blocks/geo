@@ -34,6 +34,44 @@ Same list of signals as input, but with **location** (or whatever `output_prop` 
 }
 ```
 
+ReverseGeocode
+==============
+
+Find the address corresponding to a set of coordinates 
+
+Properties
+----------
+ * Query Location - the location to geocode
+   * latitude: Something that evaluates to a floating point latitude. Use +/- rather than N/S
+   * longitude: Something that evaluates to a floating point latitude. Use +/- rather than E/W
+ * output_prop *(hidden)* - The attribute on the signal to add the geo data to. Defaults to **geodata**
+
+Dependencies
+------------
+[geopy](https://github.com/geopy/geopy)
+
+Commands
+--------
+None
+
+Input
+-----
+Any list of signals.
+
+Output
+------
+Same list of signals as input, but with **location** (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:
+
+```python
+{
+  'address': location.address,
+  'altitude': location.altitude,
+  'latitude': location.latitude,
+  'longitude': location.longitude,
+  'raw': location.raw
+}
+```
+
 GeoDistance
 ===========
 
