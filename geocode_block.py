@@ -11,7 +11,8 @@ class Geocode(Block):
 
     """ Geolocate a query to an address and coordinates """
 
-    query = ExpressionProperty(title='Query', default='175 5th Avenue NYC')
+    query = ExpressionProperty(title='Query', default='175 5th Avenue NYC',
+                               attr_default=AttributeError)
     output_prop = StringProperty(
         title='Output Attribute', default='location', visible=False)
 
@@ -34,6 +35,7 @@ class Geocode(Block):
             query = self.query(signal)
         except:
             self._logger.exception("Unable to evaluate query")
+            setattr(signal, self.output_prop, None)
             return
         try:
             self._logger.debug(

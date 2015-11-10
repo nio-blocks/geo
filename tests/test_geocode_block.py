@@ -60,6 +60,19 @@ class TestGeocodeBlock(NIOBlockTestCase):
         self.assertTrue(
             self.last_notified['default'][0].loc.raw is not None)
 
+    def test_bad_expr_property(self):
+        """Use an invalid expression property config"""
+        blk = Geocode()
+        self.configure_block(blk, {"query": "{{ $bad_prop }}"})
+        blk._geolocator = MagicMock()
+        blk.start()
+        blk.process_signals([Signal()])
+        blk.stop()
+        self.assertEqual(blk._geolocator.geocode.call_count, 0)
+        self.assert_num_signals_notified(1)
+        self.assertEqual(
+            self.last_notified['default'][0].location, None)
+
     def test_bad_response(self):
         """Test when geocode does not return a reponse"""
         blk = Geocode()
