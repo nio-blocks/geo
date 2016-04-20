@@ -1,7 +1,6 @@
 from geopy.geocoders import Nominatim
-from nio.metadata.properties import StringProperty
-from nio.common.block.base import Block
-from nio.util.attribute_dict import AttributeDict
+from nio.properties import StringProperty
+from nio.block.base import Block
 
 
 class GeocodeBase(Block):
@@ -36,29 +35,29 @@ class GeocodeBase(Block):
         """ Adds location data to the signal """
         query = self._get_query_from_signal(signal)
         if not query:
-            setattr(signal, self.output_prop, None)
+            setattr(signal, self.output_prop(), None)
             return
         try:
-            self._logger.debug(
+            self.logger.debug(
                 "Geocode query \"{}\"".format(query))
             location = self._get_location(query)
-            self._logger.debug(
+            self.logger.debug(
                 "Geocode result for query \"{}\": {}".format(query, location))
             if not location:
-                self._logger.warning(
+                self.logger.warning(
                     "No geocode loaction for query: {}".format(query))
                 return
-            location_dict = AttributeDict({
+            location_dict = {
                 'address': location.address,
                 'altitude': location.altitude,
                 'latitude': location.latitude,
                 'longitude': location.longitude,
                 'raw': location.raw
-            })
-            setattr(signal, self.output_prop, location_dict)
+            }
+            setattr(signal, self.output_prop(), location_dict)
         except:
-            self._logger.exception(
+            self.logger.exception(
                 "Unable to geocode location from query: {}".format(query))
         finally:
-            if not getattr(signal, self.output_prop, None):
-                setattr(signal, self.output_prop, None)
+            if not getattr(signal, self.output_prop(), None):
+                setattr(signal, self.output_prop(), None)
