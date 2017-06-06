@@ -5,8 +5,8 @@ Geolocate a query to an address and coordinates
 
 Properties
 ----------
- * **query**: The location to geocode
- * **output_prop** *(hidden)* : The attribute on the signal to add the geo data to. Defaults to `geodata`
+**query**: The location to geocode
+**output_prop** (default:hidden) : The attribute on the signal to add the geo data to. Defaults to `geodata`
 
 Dependencies
 ------------
@@ -33,6 +33,8 @@ Same list of signals as input, but with `geodata` (or whatever `output_prop` is 
   'raw': location.raw
 }
 ```
+
+***
 
 ReverseGeocode
 ==============
@@ -41,10 +43,10 @@ Find the address corresponding to a set of coordinates
 
 Properties
 ----------
- * **query_location**: The location to geocode
-   * **latitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `N/S`
-   * **longitude**: Something that evaluates to a floating point latitude. Use `+/-`rather than `E/W`
- * **output_prop** *(hidden)*: The attribute on the signal to add the geo data to. Defaults to `geodata`
+**query_location**: The location to geocode
+**latitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `N/S`
+**longitude**: Something that evaluates to a floating point latitude. Use `+/-`rather than `E/W`
+**output_prop** (default:hidden): The attribute on the signal to add the geo data to. Defaults to `geodata`
 
 Dependencies
 ------------
@@ -71,6 +73,8 @@ Same list of signals as input, but with `geodata` (or whatever `output_prop` is 
   'raw': location.raw
 }
 ```
+
+***
 
 GeoDistance
 ===========
@@ -81,14 +85,12 @@ This block will add geographic distance data in several different units to incom
 
 Properties
 ----------
- * **first_point**: The first point to use in the distance calculation
-   * **latitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `N/S`
-   * **longitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `E/W`
- * **second_point**: The second point to use in the distance calculation
-   * **latitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `N/S`
-   * **longitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `E/W`
- * **distance_method**: The algorithm used to compute the distance. See [Vincenty](https://en.wikipedia.org/wiki/Vincenty's_formulae) or [Great Circle](https://en.wikipedia.org/wiki/Great-circle_distance) on Wikipedia for more information
- * **output_prop** *(hidden)* - The attribute on the signal to add the geo data to. Defaults to `geodata`
+**latitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `N/S`
+**longitude**: Something that evaluates to a floating point latitude. Use `+/-` rather than `E/W`
+**first_point**: The first point to use in the distance calculation
+**second_point**: The second point to use in the distance calculation
+**distance_method**: The algorithm used to compute the distance. See [Vincenty](https://en.wikipedia.org/wiki/Vincenty's_formulae) or [Great Circle](https://en.wikipedia.org/wiki/Great-circle_distance) on Wikipedia for more information
+**output_prop** (default:hidden): The attribute on the signal to add the geo data to. Defaults to `geodata`
 
 
 Dependencies
