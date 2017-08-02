@@ -1,84 +1,26 @@
 {
-    "nio/Geocode": {
-        "Properties": {
-            "output_prop": {
-                "default": "hidden",
-                "description": "The attribute on the signal to add the geo data to. Defaults to `geodata`"
-            },
-            "query": {
-                "description": "The location to geocode"
-            }
-        },
-        "Commands": {},
-        "Input": {
-            "Description": "Any list of signals."
-        },
-        "Description": "Geolocate a query to an address and coordinates",
-        "Output": {
-            "Description": "Same list of signals as input, but with `geodata` (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:\n```python\n{\n'address': location.address,\n'altitude': location.altitude,\n'latitude': location.latitude,\n'longitude': location.longitude,\n'raw': location.raw\n}\n```"
-        },
-        "Version": "1.0.0",
-        "Category": "SignalModifier"
-    },
-    "nio/GeoDistance": {
-        "Properties": {
-            "longitude": {
-                "description": "Something that evaluates to a floating point latitude. Use `+/-` rather than `E/W`"
-            },
-            "second_point": {
-                "description": "The second point to use in the distance calculation"
-            },
-            "latitude": {
-                "description": "Something that evaluates to a floating point latitude. Use `+/-` rather than `N/S`"
-            },
-            "first_point": {
-                "description": "The first point to use in the distance calculation"
-            },
-            "output_prop": {
-                "default": "hidden",
-                "description": "The attribute on the signal to add the geo data to. Defaults to `geodata`"
-            },
-            "distance_method": {
-                "https": "//en.wikipedia.org/wiki/Vincenty's_formulae",
-                "description": "The algorithm used to compute the distance. See [Vincenty] or [Great Circle](https://en.wikipedia.org/wiki/Great-circle_distance) on Wikipedia for more information"
-            }
-        },
-        "Commands": {},
-        "Output": {
-            "Description": "Same list of signals as input, but with `geodata` (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:\n```python\n{\n'feet': 2842701.55042702,\n'kilometers': 866.4554329011002,\n'meters': 866455.4329011001,\n'miles': 538.3904451566326\n}\n```"
-        },
-        "Input": {
-            "Description": "Any list of signals."
-        },
-        "Description": "Computes the geographic distance between two lat/longs.\nThis block will add geographic distance data in several different units to incoming signals. Normally, the incoming signals will have the `latitude` and `longitude` data for at least one of the points on them. If the block cannot determine both of the points' latitudes and longitudes, the signal will still be notified, but no `geodata` will be added to the signal.",
-        "Version": "1.0.0",
-        "Category": "SignalModifier"
-    },
-    "nio/ReverseGeocode": {
-        "Properties": {
-            "latitude": {
-                "description": "Something that evaluates to a floating point latitude. Use `+/-` rather than `N/S`"
-            },
-            "longitude": {
-                "description": "Something that evaluates to a floating point latitude. Use `+/-`rather than `E/W`"
-            },
-            "output_prop": {
-                "default": "hidden",
-                "description": "The attribute on the signal to add the geo data to. Defaults to `geodata`"
-            },
-            "query_location": {
-                "description": "The location to geocode"
-            }
-        },
-        "Commands": {},
-        "Output": {
-            "Description": "Same list of signals as input, but with `geodata` (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:\n```python\n{\n'address': location.address,\n'altitude': location.altitude,\n'latitude': location.latitude,\n'longitude': location.longitude,\n'raw': location.raw\n}\n```"
-        },
-        "Input": {
-            "Description": "Any list of signals."
-        },
-        "Description": "Find the address corresponding to a set of coordinates",
-        "Version": "1.0.0",
-        "Category": "SignalModifier"
-    }
+  "nio/GeoDistance": {
+    "version": "0.0.1",
+    "description": "",
+    "inputs": {},
+    "outputs": {},
+    "properties": {},
+    "commands": {}
+  },
+  "nio/Geocode": {
+    "version": "0.0.1",
+    "description": "",
+    "inputs": {},
+    "outputs": {},
+    "properties": {},
+    "commands": {}
+  },
+  "nio/ReverseGeocode": {
+    "version": "0.0.1",
+    "description": "",
+    "inputs": {},
+    "outputs": {},
+    "properties": {},
+    "commands": {}
+  }
 }
