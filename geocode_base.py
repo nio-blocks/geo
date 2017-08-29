@@ -1,8 +1,10 @@
 from geopy.geocoders import Nominatim
 from nio.properties import StringProperty
 from nio.block.base import Block
+from nio.util.discovery import not_discoverable
 
 
+@not_discoverable
 class GeocodeBase(Block):
 
     """ Base block for Geocode and ReverseGeocode """

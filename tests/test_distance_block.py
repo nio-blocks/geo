@@ -25,7 +25,6 @@ class TestDistanceBlock(NIOBlockTestCase):
                 "latitude": "{{ $lat }}",
                 "longitude": "{{ $lng }}"
             },
-            "distance_method": "Vincenty"
         })
         blk.start()
         blk.process_signals([Signal({
