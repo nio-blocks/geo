@@ -1,7 +1,7 @@
 from enum import Enum
 from geopy.distance import great_circle, vincenty
-from nio.properties import PropertyHolder, Property, \
-    ObjectProperty, StringProperty, SelectProperty
+from nio.properties import (PropertyHolder, Property, ObjectProperty,
+                            StringProperty, SelectProperty, VersionProperty)
 from nio.block.base import Block
 from nio.util.discovery import discoverable
 
@@ -18,17 +18,17 @@ class DistanceType(Enum):
     GreatCircle = great_circle
 
 
-@discoverable
 class GeoDistance(Block):
 
     """ Compute the distance between two geographic points """
 
+    version = VersionProperty("1.0.0")
     point_1 = ObjectProperty(
         GeoPoint, title='First Point', default=GeoPoint())
     point_2 = ObjectProperty(
         GeoPoint, title='Second Point', default=GeoPoint())
     distance_method = SelectProperty(
-        DistanceType, title='Distance Method', default=DistanceType.Vincenty)
+        DistanceType, title='Distance Method', default="Vincenty")
     output_prop = StringProperty(
         title='Output Attribute', default='geodata', visible=False)
 

@@ -22,13 +22,14 @@ class TestReverseGeocodeBlock(NIOBlockTestCase):
         blk._geolocator.reverse.assert_called_once_with((3, 14))
         self.assert_num_signals_notified(1)
         self.assertEqual(
-            self.last_notified[DEFAULT_TERMINAL][0].location['address'], 'Test address')
+            self.last_notified[DEFAULT_TERMINAL][0].location['address'],
+            'Test address')
         self.assertEqual(
             self.last_notified[DEFAULT_TERMINAL][0].location['latitude'], 1)
         self.assertEqual(
             self.last_notified[DEFAULT_TERMINAL][0].location['longitude'], 2)
-        self.assertTrue(
-            self.last_notified[DEFAULT_TERMINAL][0].location['raw'] is not None)
+        raw_location = self.last_notified[DEFAULT_TERMINAL][0].location['raw']
+        self.assertTrue(raw_location is not None)
 
     def test_properties(self):
         """Use expression in query prop and non-default output_prop"""
@@ -43,7 +44,8 @@ class TestReverseGeocodeBlock(NIOBlockTestCase):
         blk._geolocator.reverse.assert_called_once_with((3, 14))
         self.assert_num_signals_notified(1)
         self.assertEqual(
-            self.last_notified[DEFAULT_TERMINAL][0].loc['address'], 'Test address')
+            self.last_notified[DEFAULT_TERMINAL][0].loc['address'],
+            'Test address')
         self.assertEqual(
             self.last_notified[DEFAULT_TERMINAL][0].loc['latitude'], 1)
         self.assertEqual(

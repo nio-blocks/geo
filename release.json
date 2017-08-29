@@ -1,17 +1,17 @@
 {
   "nio/GeoDistance": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/geo.git"
+    "url": "git://github.com/nio-blocks/geo.git",
+    "version": "1.0.0"
   },
   "nio/Geocode": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/geo.git"
+    "url": "git://github.com/nio-blocks/geo.git",
+    "version": "1.0.0"
   },
   "nio/ReverseGeocode": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/geo.git"
+    "url": "git://github.com/nio-blocks/geo.git",
+    "version": "1.0.0"
   }
 }

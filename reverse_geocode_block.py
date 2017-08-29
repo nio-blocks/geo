@@ -1,5 +1,5 @@
-from nio.properties import Property, \
-    ObjectProperty, PropertyHolder
+from nio.properties import (Property, ObjectProperty, PropertyHolder,
+                            VersionProperty)
 from nio.util.discovery import discoverable
 from .geocode_base import GeocodeBase
 
@@ -16,6 +16,7 @@ class ReverseGeocode(GeocodeBase):
 
     """ Find the address corresponding to a set of coordinates """
 
+    version = VersionProperty("1.0.0")
     location = ObjectProperty(
         GeoPoint, title='Query Location', default=GeoPoint())
 
