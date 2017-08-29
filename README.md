@@ -25,22 +25,6 @@ Dependencies
 ------------
 [geopy](https://github.com/geopy/geopy)
 
-Input
------
-Any list of signals.
-
-Output
-------
-Same list of signals as input, but with `geodata` (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:
-```python
-{
-  'feet': 2842701.55042702,
-  'kilometers': 866.4554329011002,
-  'meters': 866455.4329011001,
-  'miles': 538.3904451566326
-}
-```
-
 Geocode
 =======
 Geolocate a query to an address and coordinates.
@@ -66,23 +50,6 @@ Dependencies
 ------------
 [geopy](https://github.com/geopy/geopy)
 
-Input
------
-Any list of signals.
-
-Output
-------
-Same list of signals as input, but with `geodata` (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:
-```python
-{
-  'address': location.address,
-  'altitude': location.altitude,
-  'latitude': location.latitude,
-  'longitude': location.longitude,
-  'raw': location.raw
-}
-```
-
 ReverseGeocode
 ==============
 Find the address corresponding to a set of coordinates.
@@ -107,21 +74,3 @@ None
 Dependencies
 ------------
 [geopy](https://github.com/geopy/geopy)
-
-Input
------
-Any list of signals.
-
-Output
-------
-Same list of signals as input, but with `geodata` (or whatever `output_prop` is set to) set to an `AttributeDict` with the following format:
-```python
-{
-  'address': location.address,
-  'altitude': location.altitude,
-  'latitude': location.latitude,
-  'longitude': location.longitude,
-  'raw': location.raw
-}
-```
-
