@@ -2,6 +2,9 @@
   "nio/GeoDistance": {
     "version": "1.0.0",
     "description": "Computes the geographic distance between two lat/longs. This block will add geographic distance data in several different units to incoming signals. Normally, the incoming signals will have the latitude and longitude data for at least one of the points on them. If the block cannot determine both of the points' latitudes and longitudes, the signal will still be notified, but no geodata will be added to the signal.",
+    "categories": [
+      "Web Data"
+    ],
     "properties": {
       "distance_method": {
         "title": "Distance Method",
@@ -49,6 +52,9 @@
   "nio/Geocode": {
     "version": "1.0.0",
     "description": "Geolocate a query to an address and coordinates.",
+    "categories": [
+      "Web Data"
+    ],
     "properties": {
       "output_prop": {
         "title": "Output Attribute",
@@ -78,6 +84,9 @@
   "nio/ReverseGeocode": {
     "version": "1.0.0",
     "description": "Find the address corresponding to a set of coordinates.",
+    "categories": [
+      "Web Data"
+    ],
     "properties": {
       "location": {
         "title": "Query Location",
