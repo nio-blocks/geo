@@ -1,8 +1,13 @@
-from geopy.geocoders import Nominatim
-from nio.properties import StringProperty
+from geopy.geocoders import Nominatim, ArcGIS, GoogleV3
+from nio.properties import StringProperty, SelectProperty
 from nio.block.base import Block
 from nio.util.discovery import not_discoverable
+from enum import Enum
 
+class GeoSource(Enum):
+    Nominatim = 'nominatim'
+    ArcGIS= 'arcgis'
+    GoogleV3 = 'googlev3'
 
 @not_discoverable
 class GeocodeBase(Block):
@@ -11,6 +16,11 @@ class GeocodeBase(Block):
 
     output_prop = StringProperty(
         title='Output Attribute', default='location', visible=False)
+    source = SelectProperty(
+        GeoSource,
+        default=GeoSource.ArcGIS,
+        title='Geocode Source'
+    )
 
     def __init__(self):
         super().__init__()
@@ -18,7 +28,12 @@ class GeocodeBase(Block):
 
     def configure(self, context):
         super().configure(context)
-        self._geolocator = Nominatim()
+        if self.source() == GeoSource.Nominatim:
+            self._geolocator = Nominatim()
+        if self.source() == GeoSource.ArcGIS:
+            self._geolocator = ArcGIS()
+        if self.source() == GeoSource.GoogleV3:
+            self._geolocator = GoogleV3()
 
     def process_signals(self, signals, input_id='default'):
         for signal in signals:
