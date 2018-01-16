@@ -33,6 +33,7 @@ Properties
 ----------
 - **output_prop**: The attribute on the signal to add the geo data to.
 - **query**: The location to geocode.
+- **source**: 
 
 Inputs
 ------
@@ -50,6 +51,29 @@ Dependencies
 ------------
 [geopy](https://github.com/geopy/geopy)
 
+Geohash
+=======
+Geohash a set of coordinates into a unique identifier
+
+Properties
+----------
+- **adj**: Configure output to include 8 neighbor geohash locations
+- **lat**: Latitude coordinate value
+- **lng**: Longitude coordinate value
+- **precision**: Amount of information to include in the output
+
+Inputs
+------
+- **default**: Any list of signals
+
+Outputs
+-------
+- **default**: Input signals enriched with geohash data
+
+Commands
+--------
+None
+
 ReverseGeocode
 ==============
 Find the address corresponding to a set of coordinates.
@@ -58,6 +82,7 @@ Properties
 ----------
 - **location**: The location to geocode.
 - **output_prop**: The attribute on the signal to add the geo data to.
+- **source**: 
 
 Inputs
 ------
@@ -74,3 +99,4 @@ None
 Dependencies
 ------------
 [geopy](https://github.com/geopy/geopy)
+
