@@ -9,6 +9,11 @@
     "url": "git://github.com/nio-blocks/geo.git",
     "version": "1.0.0"
   },
+  "nio/Geohash": {
+    "language": "Python",
+    "url": "git://github.com/nio-blocks/geo.git",
+    "version": "1.0.0"
+  },
   "nio/ReverseGeocode": {
     "language": "Python",
     "url": "git://github.com/nio-blocks/geo.git",
