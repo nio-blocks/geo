@@ -71,7 +71,7 @@
       "source": {
         "title": "Geocode Source",
         "type": "SelectType",
-        "description": "",
+        "description": "The source of the geolocator used for geocoding locations",
         "default": "arcgis"
       }
     },

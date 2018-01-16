@@ -33,7 +33,7 @@ Properties
 ----------
 - **output_prop**: The attribute on the signal to add the geo data to.
 - **query**: The location to geocode.
-- **source**: 
+- **source**: The source of the geolocator used for geocoding locations
 
 Inputs
 ------
