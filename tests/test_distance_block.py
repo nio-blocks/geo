@@ -69,7 +69,7 @@ class TestDistanceBlock(NIOBlockTestCase):
 
         self.assert_num_signals_notified(1)
         self.assertAlmostEqual(
-            self.last_notified[DEFAULT_TERMINAL][0].geodata['miles'], 537.1485,
+            self.last_notified[DEFAULT_TERMINAL][0].geodata['miles'], 536.998,
             2,
         )
 
