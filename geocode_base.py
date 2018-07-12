@@ -64,6 +64,8 @@ class GeocodeBase(Block):
                 self.logger.warning(
                     "No geocode loaction for query: {}".format(query))
                 return
+            if isinstance(location, list):
+                location = location[0]
             location_dict = {
                 'address': location.address,
                 'altitude': location.altitude,

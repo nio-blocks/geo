@@ -95,3 +95,22 @@ class TestReverseGeocodeBlock(NIOBlockTestCase):
         self.assert_num_signals_notified(1)
         self.assertEqual(
             self.last_notified[DEFAULT_TERMINAL][0].location, None)
+
+    def test_listed_results(self):
+        """Geocoder may return a list of results, the first one is used."""
+        blk = ReverseGeocode()
+        self.configure_block(blk, {})
+        blk._geolocator = MagicMock()
+        blk._geolocator.reverse.return_value = [
+            Location('foo', (1, 2), {"et": "cetera"}),
+            Location('bar', (3, 4), {"et": "alia"})]
+        blk.start()
+        blk.process_signals([Signal({"lat": 3, "lng": 14})])
+        blk.stop()
+        self.assertEqual(
+            self.last_notified[DEFAULT_TERMINAL][0].location['address'],
+            'foo')
+        self.assertEqual(
+            self.last_notified[DEFAULT_TERMINAL][0].location['latitude'], 1)
+        self.assertEqual(
+            self.last_notified[DEFAULT_TERMINAL][0].location['longitude'], 2)
