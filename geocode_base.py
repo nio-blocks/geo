@@ -15,7 +15,7 @@ class GeocodeBase(Block):
     """ Base block for Geocode and ReverseGeocode """
 
     output_prop = StringProperty(
-        title='Output Attribute', default='location', visible=False)
+        title='Output Attribute', default='location', advanced=True)
     source = SelectProperty(
         GeoSource,
         default=GeoSource.ArcGIS,

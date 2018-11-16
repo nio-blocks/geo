@@ -30,7 +30,7 @@ class GeoDistance(Block):
     distance_method = SelectProperty(
         DistanceType, title='Distance Method', default="Vincenty")
     output_prop = StringProperty(
-        title='Output Attribute', default='geodata', visible=False)
+        title='Output Attribute', default='geodata', advanced=True)
 
     def process_signals(self, signals, input_id='default'):
         for signal in signals:
