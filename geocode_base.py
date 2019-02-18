@@ -62,7 +62,7 @@ class GeocodeBase(Block):
                 "Geocode result for query \"{}\": {}".format(query, location))
             if not location:
                 self.logger.warning(
-                    "No geocode loaction for query: {}".format(query))
+                    "No geocode location for query: {}".format(query))
                 return
             if isinstance(location, list):
                 location = location[0]
